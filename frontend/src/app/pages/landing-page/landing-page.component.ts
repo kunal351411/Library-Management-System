@@ -8,8 +8,10 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent {
     
-    constructor(private router: Router) {
+    constructor(private _router: Router) {
+
+      /** If the user is already logged in, he is redirected to Books Page instead of landing page */
       if(localStorage.getItem('isLoggedIn') == "true")
-        this.router.navigate(['/books']);
+        this._router.navigate(['/books']);
     }    
 }

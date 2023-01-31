@@ -7,17 +7,26 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private authService: AuthService){
+
+  constructor(private _authService: AuthService){
 
   }
 
-  isAuthenticated(): boolean 
+  /**
+   * Function that checks whether user is authenticated or not based on token in local storage
+   * @returns true if user is authenticated otherwise false
+   */
+  public isAuthenticated(): boolean 
   {
       return localStorage.getItem('isLoggedIn') == "true"
   }
 
-  logout(): void 
+
+  /**
+   * Function that logs the user out using the service
+   */
+  public logout(): void 
   {
-      this.authService.logout();
+      this._authService.logout();
   }
 }

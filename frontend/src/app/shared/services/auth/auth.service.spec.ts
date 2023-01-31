@@ -1,11 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AuthService } from './auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Routes, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { SnackbarService } from '../snackbar/snackbar.service';
-import { BooksComponent } from 'src/app/pages/books/books.component';
+import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -22,12 +20,11 @@ describe('AuthService', () => {
     );
 
 
-  const validLoginData = {
+  const VALID_LOGIN_DATA = {
     email: 'admin@123.com',
     password: '12345678'
   }
-
-  const invalidLoginData = {
+  const INVALID_LOGIN_DATA = {
     email: 'admin@1.com',
     password: '123456'
   }
@@ -50,10 +47,10 @@ describe('AuthService', () => {
 
   it('should login the user for valid login data', () => {
     spyOn(localStorage, 'setItem');
-    service.login(validLoginData);
+    service.login(VALID_LOGIN_DATA);
 
     expect(localStorage.setItem).toHaveBeenCalledWith('isLoggedIn', "true");
-    expect(localStorage.setItem).toHaveBeenCalledWith('token', validLoginData.email);
+    expect(localStorage.setItem).toHaveBeenCalledWith('token', VALID_LOGIN_DATA.email);
 
     expect(fakeSnackbarService.openSnackBar).toHaveBeenCalledWith("Logged In Successfully",'');
 
@@ -63,7 +60,7 @@ describe('AuthService', () => {
   it('should show alert for invalid login data', () => {
     spyOn(window, 'alert');
 
-    service.login(invalidLoginData);
+    service.login(INVALID_LOGIN_DATA);
 
     expect(window.alert).toHaveBeenCalledWith('Login Failed: Email or Password is wrong');
   });

@@ -14,11 +14,16 @@ export class AuthService {
   }
 
   constructor(
-    private router: Router,
-    private snackbarService: SnackbarService
+    private _router: Router,
+    private _snackbarService: SnackbarService
   ) { }
 
-  login(loginData: User): void
+  /**
+   * Function that validates the data of login user and if validated creates a token for 
+   * user in localStorage redirects to Books Page. Gives an alert if credentials are invalid
+   * @param loginData - The details of the user that he entered in login form
+   */
+  public login(loginData: User): void
   {
     if(loginData.email === this.adminUser.email && loginData.password === this.adminUser.password)
     {
@@ -26,20 +31,24 @@ export class AuthService {
 
         localStorage.setItem('isLoggedIn', "true");
         localStorage.setItem('token', loginData.email);
-        this.snackbarService.openSnackBar("Logged In Successfully",'');
-        this.router.navigate(['books']);    
+        this._snackbarService.openSnackBar("Logged In Successfully",'');
+        this._router.navigate(['books']);    
     }
     else {
       alert("Login Failed: Email or Password is wrong");
     }
   }
 
-  logout(): void
+  /**
+   * Function that logs the user out by removing the token from local storage and redirects 
+   * the user to landing page
+   */
+  public logout(): void
   {
       console.log("Logged out successfully");
       localStorage.setItem('isLoggedIn','false');    
       localStorage.removeItem('token');    
-      this.snackbarService.openSnackBar("Logged out Successfully",'');
-      this.router.navigate(['']);   
+      this._snackbarService.openSnackBar("Logged out Successfully",'');
+      this._router.navigate(['']);   
   }
 }

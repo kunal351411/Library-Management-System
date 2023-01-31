@@ -1,7 +1,6 @@
 require("dotenv").config();
 const env = process.env.NODE_ENV || "development";
 const config = require("../../config/config.json")[env];
-
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(
@@ -11,6 +10,7 @@ const sequelize = new Sequelize(
   config
 );
 
+/** Connection setup with the respective database through sequelize */
 sequelize
   .authenticate()
   .then(() => {

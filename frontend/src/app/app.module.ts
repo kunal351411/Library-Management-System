@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+/** MatImportsModule is a custom module created using CLI and contain imports of every 
+ *  required Material Module */
 import { MatImportsModule } from './mat-imports/mat-imports.module';
 
 import { AppComponent } from './app.component';

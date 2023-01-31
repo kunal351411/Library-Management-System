@@ -1,7 +1,12 @@
 const BooksService =  require("../services/books");
 
 
-//Add new book
+/**
+ * Function that receives details of new book to be added from frontend and pass it to respective service
+ * @param  req - The request body that contains details of the new book that is to be added
+ * @param  res - The response object that returns the response of server back to frontend
+ * @returns The response object with respective status code and JSON
+ */
 const addNewBook = async (req,res) => {
   try{
     const modifiedAddBookInfo = {
@@ -23,7 +28,13 @@ const addNewBook = async (req,res) => {
     }    
 }
 
-//Get all the books
+
+/**
+ * Function that fetches all the book records through service and pass it to frontend
+ * @param  req - The request body
+ * @param  res - The response object that returns the response of server back to frontend
+ * @returns The response object with respective status code and JSON
+ */
 const getAllBooks = async (req,res) => {
   try{
     const allBooks = await BooksService.getAllBooks();
@@ -41,7 +52,12 @@ const getAllBooks = async (req,res) => {
   }
 }
 
-//Get a book using id of the book 
+/**
+ * Function that fetches the details of particular book through service and pass it to frontend
+ * @param  req - The request param contains the id of the book to be fetched
+ * @param  res - The response object that returns the response of server back to frontend
+ * @returns The response object with respective status code and JSON
+ */
 const getBookById = async (req,res) => {
   try{
     const foundBook = await BooksService.getBookByBookId(req.params.id);
@@ -59,7 +75,14 @@ const getBookById = async (req,res) => {
   }
 }
 
-//update a book by passing id of that book
+
+/**
+ * Function that updates the details of particular book through service
+ * @param  req - The request param contains the id of the book to be updated
+ *                and request body contains the new details of the book 
+ * @param  res - The response object that returns the response of server back to frontend
+ * @returns The response object with respective status code and JSON
+ */
 const updateBookById = async (req,res) => {
   try{
     const modifiedUpdateBookInfo = {
@@ -82,7 +105,13 @@ const updateBookById = async (req,res) => {
   }
 }
 
-//Delete the book by providing its id
+
+/**
+ * Function that deletes the details of particular book through service
+ * @param  req - The request param contains the id of the book to be deleted
+ * @param  res - The response object that returns the response of server back to frontend
+ * @returns The response object with respective status code and JSON
+ */
 const deleteBookById = async (req,res) => {
   try {
     await BooksService.deleteBookByBookId(req.params.id);

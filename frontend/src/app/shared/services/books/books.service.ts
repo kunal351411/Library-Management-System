@@ -11,30 +11,64 @@ export class BooksService {
 
   baseUrl: string = "http://localhost:3000/books";
 
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  addBook(book: Book): Observable<Response>
+  /**
+   * Function that sends a POST request to server to add new book 
+   * @param book - The details of the new book to be added in database
+   * @returns Observable Response object containing details of the book added  
+   *           received from server
+   */
+  public addBook(book: Book): Observable<Response>
    {
-      return this.http.post<Response>(`${this.baseUrl}/add`,book);
+      return this._http.post<Response>(`${this.baseUrl}/add`,book);
    }
 
-   getBookList(): Observable<Response>
+
+   /**
+   * Function that sends a GET request to server to fetch all the book records
+   * @param 
+   * @returns Observable Response object containing list of all book records 
+   *           received from server
+   */
+   public getBookList(): Observable<Response>
    {
-      return this.http.get<Response>(`${this.baseUrl}/all`)
+      return this._http.get<Response>(`${this.baseUrl}/all`)
    }
 
-   getBookById(id: number): Observable<Response>
+
+   /**
+   * Function that sends a GET request to server to fetch details of a particular book
+   * @param id - The id of the book whose details are to be fetched
+   * @returns Observable Response object containing details of the book record 
+   *          fetched from server
+   */
+   public getBookById(id: number): Observable<Response>
    {
-      return this.http.get<Response>(`${this.baseUrl}/${id}`)
+      return this._http.get<Response>(`${this.baseUrl}/${id}`)
    }
 
-   deleteBook(id: number)
+
+   /**
+   * Function that sends a DELETE request to server to delete details of a particular book
+   * @param id - The id of the book whose details are to be deleted
+   * @returns Observable Response object containing number of book records
+   *         deleted from the server
+   */
+   public deleteBook(id: number)
    {
-      return this.http.delete(`${this.baseUrl}/delete/${id}`)
+      return this._http.delete(`${this.baseUrl}/delete/${id}`)
    }
 
-   updateBook(book: Book)
+
+   /**
+   * Function that sends a PUT request to server to update details of a particular book
+   * @param id - The id of the book whose details are to be updated
+   * @returns Observable Response object containing number of book records
+   *          updated to  server
+   */
+   public updateBook(book: Book)
    {
-      return this.http.put(`${this.baseUrl}/edit/${book.id}`,book)
+      return this._http.put(`${this.baseUrl}/edit/${book.id}`,book)
    }
 }

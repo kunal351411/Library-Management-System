@@ -28,10 +28,12 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
+  /** Smoke test to ensure that app component is created */
   it('should create the app', () => {
     expect(app).toBeTruthy();
   });
 
+  /** Smoke test to ensure that header component is created */
   it('should render the header component', () => {
     
     const header = fixture.debugElement.query(By.css('app-header'));

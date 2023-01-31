@@ -7,21 +7,31 @@ import { Router } from '@angular/router';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router){
+  constructor(private _router: Router){
 
   }
 
-  canActivate(): boolean {
+  /**
+   * Function that checks whether a user can access a particular route or not based on whether
+   * he is logged in or not. If not logged in, the user is redirected to Login page
+   * @returns whether the user can access the given route
+   */
+  public canActivate(): boolean {
     if(this.isLoggedIn())
     {
       return true;
     }else 
     {
-      this.router.navigate(['/login'])
+      this._router.navigate(['/login'])
       return false;
     }  
   }
 
+
+  /**
+   * Function that uses localStorage to find whether user is logged in or not
+   * @returns login status of the user
+   */
   public isLoggedIn(): boolean {      
      let status = false;      
      if (localStorage.getItem('isLoggedIn') == "true") {      

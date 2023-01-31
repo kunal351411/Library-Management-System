@@ -1,14 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router, Routes } from '@angular/router';
+import { By } from '@angular/platform-browser';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeaderComponent } from './header.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
-import { By } from '@angular/platform-browser';
+
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar/snackbar.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -27,6 +28,7 @@ describe('HeaderComponent', () => {
     },
   }
 
+  /** Fake routes for Router Testing Module */
   const routes: Routes = [
     {path: '', component: HeaderComponent},
     {path: 'login', component: LoginComponent},
@@ -98,7 +100,7 @@ describe('HeaderComponent', () => {
   it('should call logout from authService when logout button clicked', () => {
     component.isAuthenticated = () => true;
     fixture.detectChanges();
-    spyOn(router, 'navigate');
+
     spyOn(fakeAuthService, 'logout');
     const logoutButton = fixture.debugElement.query(By.css('button'));
     logoutButton.nativeElement.click();
