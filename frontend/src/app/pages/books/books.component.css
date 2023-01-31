@@ -1,11 +1,13 @@
 .modal.fade.show {
     display: block;
+
     background: rgba(0, 0, 0, 0.4);
 }
 
 mat-form-field 
 {
     width: 100%;
+    
     padding-bottom: 0.5rem;
 }
 
