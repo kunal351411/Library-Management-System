@@ -1,0 +1,122 @@
+<div *ngIf="clickedBookId===null">
+    <div class="card shadow mb-3" style="max-width: 540px;min-height: 190px;" [class.shadow]="mouseOvered" 
+            (mouseover)="mouseOvered=true" data-testid="book-card"
+            (mouseout)="mouseOvered=false" role="button" (click)="onBookClick(book)" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="bookCardInfo.imageUrl" class="img-fluid rounded-start" [alt]="bookCardInfo.name">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body " >
+                <div>
+                        <h5 class="card-title"><strong>{{bookCardInfo.name | titlecase}}</strong></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">by {{bookCardInfo.author | titlecase}}</h6>
+                        <p>
+                            <strong><span >{{bookCardInfo.price | currency:"INR"}}</span></strong>
+                        </p>
+                    </div>
+                    <button type="button" class="mx-3" mat-raised-button color="primary"
+                        (click)="onEditClick(bookCardInfo,$event)" onclick="this.blur();"
+                        ><mat-icon>edit</mat-icon>
+                        Edit</button>
+                    <button type="button" mat-stroked-button color="warn" data-testid="delete-button"
+                    (click)="onDeleteBook(bookCardInfo.id,$event)" onclick="this.blur();"
+                        ><mat-icon>delete</mat-icon>
+                        Delete
+                    </button>
+                </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<ng-container *ngIf="clickedBookId!==null">
+    <app-navbar></app-navbar>
+<div class="d-flex justify-content-center single-book" data-testid="book-details" >
+ <div class="card mb-3" style="max-width: 800px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="bookCardInfo.imageUrl" class="img-fluid rounded-start" [alt]="bookCardInfo.name"
+      >
+    </div>
+    <div class="col-md-8">
+      <div class="card-body " >
+                    <div class="text">
+                        <h5 class="card-title header"><strong>{{bookCardInfo.name | titlecase}}</strong></h5>
+                        <h6 class="card-subtitle my-2 text-muted author">&nbsp;&nbsp;by {{bookCardInfo.author | titlecase}}</h6>
+                        <p class="currency">
+                            <strong><span >&ensp;{{bookCardInfo.price | currency:"INR"}}</span></strong>
+                        </p>
+                    </div>
+                    <div class="buttons float-end">
+                        <button type="button" mat-raised-button color="primary"
+                        (click)="onEditClick(bookCardInfo,$event)" onclick="this.blur();"
+                         class="btn-1"   ><mat-icon>edit</mat-icon>
+                            Edit</button>
+                        <button type="button" class="btn-2" mat-stroked-button color="warn"
+                        (click)="onDeleteBook(bookCardInfo.id,$event)" onclick="this.blur();"
+                            data-testid="delete-button"><mat-icon>delete</mat-icon>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+    </div>
+  </div>
+</div>
+</div>
+</ng-container>
+
+
+<div class="modal fade show" [class.show]="showModal" data-testid="edit-form">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Update Book Info</h5>
+            <button (click)="onCloseModal()"  type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        
+        <form [formGroup]="bookForm" (ngSubmit)="onUpdateBookSubmit()"> 
+            <div class="modal-body">
+                <div class="form-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Book Name</mat-label>
+                        <input matInput type="text" class="form-control" formControlName="name" required>
+                        <mat-error data-testid="name-required" *ngIf="!bookForm.get('name')!.valid && bookForm.get('name')!.touched">Please Enter Book Name.</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div class="form-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Author Name</mat-label>
+                        <input matInput type="text" class="form-control" formControlName="author" required>
+                        <mat-error data-testid="author-required" *ngIf="!bookForm.get('author')!.valid && bookForm.get('author')!.touched">Please Enter Author Name.</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div class="form-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Book Price</mat-label>
+                        <input matInput type="text" class="form-control" formControlName="price" required>
+                        <mat-error data-testid="price-required" *ngIf="!bookForm.get('price')!.valid && bookForm.get('price')!.touched">Book Price is required</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Book Image URL</mat-label>
+                        <input matInput type="text" class="form-control" formControlName="imageUrl">
+                    </mat-form-field>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button mat-raised-button color="primary" data-testid="update-button"
+                        type="submit" class="mx-3" [disabled]="!this.bookForm.valid">Update</button>
+                <button data-testid="close-button" mat-raised-button type="button" (click)="onCloseModal()" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

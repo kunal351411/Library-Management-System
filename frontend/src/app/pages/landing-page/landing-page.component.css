@@ -1,0 +1,11 @@
+body 
+{
+    height:100%;
+    background-image: url('https://educationtribe.in/wp-content/uploads/2020/07/Library-Management-System-1024x653.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: hidden;
+    opacity: 0.8;
+    -ms-overflow-style: none;
+}
+

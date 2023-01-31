@@ -1,0 +1,31 @@
+.mat-divider
+{
+    border-top-width: 5px;
+    border-top-color: #8F6FEA;
+}
+
+.mat-divider.mat-divider-inset
+{
+    margin-left:0;
+}
+
+.example-action-button {
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+.tabs
+{
+    height:100%;
+    margin-left: 25rem;
+}
+
+.tabs button
+{
+    height:100%;
+    padding: 0 1rem;
+}
+
+.active{
+    background-color: #e6e6e6
+}

@@ -1,0 +1,13 @@
+<mat-toolbar class="header">
+    <img src="/assets/images/open-book.png" alt="book" width="45" class="header-image">
+    <h4 ><strong>&emsp;Online Library <br>Management System</strong></h4>
+  <span class="spacer"></span>
+  
+    <ng-container *ngIf="isAuthenticated()">
+      <button  mat-raised-button color="warn" (click)="logout()" >Logout</button>
+    </ng-container>
+    <ng-container *ngIf="!isAuthenticated()">
+      <button  mat-raised-button color="primary" routerLink="/login" >Login</button>
+    </ng-container>
+</mat-toolbar>
+

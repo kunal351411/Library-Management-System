@@ -1,0 +1,22 @@
+.header {
+    background-color: white !important;
+}
+
+.header-image{
+    padding: 1rem 1rem 1rem 4rem;
+    box-sizing: content-box !important;
+}
+
+.header h4
+{
+    font-size: 1rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header button{
+   margin-right: 6rem;
+}
+

@@ -1,0 +1,21 @@
+<mat-toolbar class="navbar">
+<div class="tabs">
+    <button mat-button >DASHBOARD</button>
+    <button mat-button >CATEGORIES
+        <mat-icon>expand_more</mat-icon>
+    </button>
+    <button mat-button >AUTHORS
+        <mat-icon>expand_more</mat-icon>
+    </button>
+    <button data-testid="books-button" mat-button routerLink="/books" routerLinkActive="active" >BOOKS
+    </button>
+    <button mat-button >ISSUE BOOKS
+        <mat-icon>expand_more</mat-icon>
+    </button>
+    <button mat-button >REG STUDENTS
+    </button>
+    <button mat-button >CHANGE PASSWORD
+    </button>
+</div>
+</mat-toolbar>
+<mat-divider [inset]="true"></mat-divider>

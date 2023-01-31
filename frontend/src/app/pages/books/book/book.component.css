@@ -1,0 +1,62 @@
+.modal.fade.show {
+    display: block;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+img 
+{
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.single-book .card 
+{
+    /* border: 2.5px solid #8F6FEA; */
+    border: none !important;
+    margin-top:3rem;
+    padding: 4rem
+}
+
+.single-book .header
+{
+    font-family: 'Recursive', sans-serif !important;
+    font-size: 3rem;
+}
+
+.single-book .author 
+{
+    font-size: 1.5rem;
+}
+
+.single-book .currency 
+{
+    margin: 2rem 0 0;
+    font-size: 1.5rem;
+}
+
+.single-book .buttons>button
+{
+    position: absolute;
+    bottom: 4rem;
+}
+
+.single-book .btn-2 
+{
+    right: 2rem;
+}
+
+.single-book .btn-1
+{
+    right: 10rem;
+}
+
+mat-form-field 
+{
+    width: 100%;
+    padding-bottom: 0.5rem;
+}
+
+mat-error
+{
+    font-size: 12px;
+}
